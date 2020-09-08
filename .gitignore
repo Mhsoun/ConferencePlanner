@@ -10,8 +10,8 @@
 *.userosscache
 *.sln.docstates
 
-ConferencePlanner/BackEnd/appsettings.json
-ConferencePlanner/BackEnd/appsettings.Development.json
+appsettings.json
+appsettings.Development.json
 
 
 # User-specific files (MonoDevelop/Xamarin Studio)
