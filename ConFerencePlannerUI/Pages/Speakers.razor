@@ -1,0 +1,95 @@
+﻿@page "/speakers"
+@using ConFerencePlannerUI.Models
+@inject HttpClient http
+
+
+<div class="container">
+    <div class="text-right">
+        <button type="submit" class="btn btn-danger" onclick="DeleteAllSpeakers">Delete All Speakers</button>
+    </div>
+    <EditForm class="my-5" Model="@speaker" OnSubmit="@CreateSpeaker">
+        <h5 class="mb-3">Add speaker</h5>
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Name.." @bind="speaker.Name" />
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Bio.." @bind="speaker.Bio" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Website..." @bind="speaker.WebSite" />
+        </div>
+        <button type="submit" class="btn btn-sucess">Add speaker</button>
+    </EditForm>
+
+    <table class="table">
+        <thead class="thead-dark">
+
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Bio</th>
+                <th scope="col" colspan="2">Website</th>
+            </tr>
+        </thead>
+
+        @if (speakers != null)
+        {
+            <tbody>
+                @foreach (var speaker in speakers)
+                {
+                    <tr>
+                        <th scope="row">@speaker.Id</th>
+                        <td>@speaker.Name</td>
+                        <td>@speaker.Bio</td>
+                        <td>@speaker.WebSite</td>
+                        <td class="text-center">
+                            <span style="cursor:pointer" class="oi oi-trash" @onclick="()=> DeleteSpeaker(speaker.Id)"></span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        }
+    </table>
+</div>
+
+
+@code {
+
+    private List<SpeakerModel> speakers;
+    private SpeakerCreateModel speaker;
+
+    private async Task GetSpeakers()
+    {
+        speakers = await http.GetJsonAsync<List<SpeakerModel>>("http://localhost:55185/api/Speakers");
+        StateHasChanged();
+    }
+
+    private async Task CreateSpeaker()
+    {
+        await http.PostJsonAsync<List<SpeakerCreateModel>>("http://localhost:55185/api/Speakers", speaker);
+        speaker = new SpeakerCreateModel();
+        await GetSpeakers();
+    }
+
+    private async Task DeleteAllSpeakers()
+    {
+        await http.DeleteAsync("http://localhost:55185/api/Speakers/all");
+        await GetSpeakers();
+    }
+
+    private async Task DeleteSpeaker(int id)
+    {
+        await http.DeleteAsync($"http://localhost:55185/api/Speakers/{id}");
+        await GetSpeakers();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        speaker = new SpeakerCreateModel();
+        await GetSpeakers();
+    }
+}

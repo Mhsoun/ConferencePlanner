@@ -101,6 +101,18 @@ namespace BackEnd.Controllers
             return speaker;
         }
 
+        [HttpDelete("all")]
+        public async Task<ActionResult> DeleteAllSpeakers()
+        {
+            foreach (var c in _context.Speakers)
+            {
+                _context.Speakers.Remove(c);
+            }
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
         private bool SpeakerExists(int id)
         {
             return _context.Speakers.Any(e => e.Id == id);

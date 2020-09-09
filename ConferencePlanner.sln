@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEnd", "BackEnd\BackEnd.csproj", "{26541592-99C7-4170-ACD3-424C2C407B5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackEnd", "BackEnd\BackEnd.csproj", "{26541592-99C7-4170-ACD3-424C2C407B5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConFerencePlannerUI", "ConFerencePlannerUI\ConFerencePlannerUI.csproj", "{7188B672-C1F0-424E-9A2D-479DFE67F67E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{26541592-99C7-4170-ACD3-424C2C407B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26541592-99C7-4170-ACD3-424C2C407B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26541592-99C7-4170-ACD3-424C2C407B5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7188B672-C1F0-424E-9A2D-479DFE67F67E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7188B672-C1F0-424E-9A2D-479DFE67F67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7188B672-C1F0-424E-9A2D-479DFE67F67E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7188B672-C1F0-424E-9A2D-479DFE67F67E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
